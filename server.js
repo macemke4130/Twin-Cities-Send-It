@@ -15,7 +15,7 @@ var schema = buildSchema(`
       name: String
       description: String
       added_by: Int
-      mapLink: String
+      maplink: String
       gps: String
       rating: Int
   }

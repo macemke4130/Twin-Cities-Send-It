@@ -10,11 +10,11 @@ const gql = async (ask) => {
     return r.data;
 }
 
-const hillName = async () => {
-    const r = await gql(`{hillInfo { name, description, added_by, gps }}`);
+const getHill = async () => {
+    const r = await gql(`{hillInfo (id: 5) { name, description, maplink, gps }}`);
     console.log(r);
 }
 
-hillName();
+getHill();
 
 // Params?
