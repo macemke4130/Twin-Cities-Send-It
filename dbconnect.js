@@ -1,7 +1,7 @@
 import * as mysql from 'mysql';
 import { createPool } from 'mysql';
 
-export const pool = createPool({
+const pool = createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'tcsi_user',
@@ -9,7 +9,7 @@ export const pool = createPool({
     database: 'tcsi'
 });
 
-export const Query = (query, values) => {
+export const query = (query, values) => {
     return new Promise((resolve, reject) => {
 
         const sql = mysql.format(query, values);
@@ -28,6 +28,5 @@ export const Query = (query, values) => {
 };
 
 export default {
-    pool,
-    Query
+    query
 }

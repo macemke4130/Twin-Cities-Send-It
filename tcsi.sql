@@ -14,7 +14,7 @@ create table hills (
     created_at timestamp default now()
 );
 insert into hills (name, description, added_by, maplink, gps, rating) values (
-"Park Spanish Immersion Elementary School", "Great hill with a fantastic asphalt runup and sidewalk entrance.", 1, "https://goo.gl/maps/pFJxCNUoDZ591e738", "44.95481907653575, -93.39854742518634", 2
+"French Regional Park Sledding Hill", "", 1, "https://goo.gl/maps/rVHifEpt6wCRb2f7A", "45.023091312740384, -93.4338504939871", 0
 );
 select * from hills;
 
