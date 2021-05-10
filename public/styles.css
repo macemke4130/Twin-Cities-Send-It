@@ -120,6 +120,11 @@ nav a:hover {
     margin: 0.5em;
 }
 
+#description {
+    width: 80%;
+    text-align: center;
+}
+
 #map-section {
     display: flex;
     flex-direction: column;

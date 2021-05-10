@@ -11,4 +11,4 @@ export default {
         database: process.env.DB_SCHEMA
     },
     keys: { }
-}
+};
