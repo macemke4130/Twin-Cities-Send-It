@@ -1,24 +1,14 @@
 import * as mysql from 'mysql';
+import config from './config/index.js';
 import { createPool } from 'mysql';
 
-const pool = createPool({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'tcsi_user',
-    password: 'root',
-    database: 'tcsi'
-});
+const pool = createPool(config.mysql);
 
 export const query = (query, values) => {
     return new Promise((resolve, reject) => {
-
         const sql = mysql.format(query, values);
-        console.log("Query Running");
-        console.log(sql);
-        console.log('');
-
         pool.query(sql, (err, results) => {
-            if(err) {
+            if (err) {
                 reject(err);
             } else {
                 resolve(results);

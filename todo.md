@@ -1,0 +1,24 @@
+# To Do
+- Evironment Variables
+- Media Queries
+- Details
+    - Panarama Photo Feature?
+- Footer
+    - Social Media
+    - Copyright
+    - Donate Button
+- About
+    - Legal
+    - FAQ
+        - 
+    - Donate
+    - Credits
+- Heroku Push
+    - Domain Register
+- Submit a Send
+    - Contact Form
+    - Mailgun
+- Admin Page
+    - Photo Uploader
+    - CRUD for Hills
+    - CRUD for Video Links

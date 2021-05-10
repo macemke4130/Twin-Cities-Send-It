@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Convergence&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Loading...</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/">Home</a>
+            <a href="./allsends.html">All Sends</a>
+            <a href="./about.html">About</a>
+            <a href="./submit.html">Submit a Send</a>
+        </div>
+    </nav>
+    <header class="hero-image height-50">
+        <div class="hero-text">
+            <h1 id="hillName">Loading</h1>
+        </div>
+    </header>
+    <main>
+        <p class="rating">Difficulty Rating: <span id="rating">Loading</span></p>
+        <p id="description">Loading</p>
+        <div id="video-section">
+            <iframe id="video" src="./loading.html" title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div id="photo-section"></div>
+        <div id="map-section">
+            <iframe id="map" src="" allowfullscreen="" loading="lazy"></iframe>
+            <p><a id="mapLink" target="_blank">Link to Google Map</a></p>
+        </div>
+        <a id="back" onclick="goBack()" class="go-back">Go Back</a>
+    </main>
+    <footer>
+        <div id="footer-container">
+            <a href="https://www.instagram.com/twincitiessendit/" target="_blank">Instagram</a>
+            <span>Copyright 2021</span>
+        </div>
+    </footer>
+    <script src="./details.js"></script>
+</body>
+
+</html>

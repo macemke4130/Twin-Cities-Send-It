@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1em;
+}
+
+h1 {
+    font-family: 'Convergence', sans-serif;
+    font-size: 4rem;
+    text-shadow: 5px 5px 5px black;
+}
+
+h2, h3, h4, p {
+   font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+nav a {
+    font-family: 'Convergence', sans-serif;
+    color: black;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px;
+    text-decoration: none;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+nav a:hover {
+    color: white;
+    background-color: black;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.hero-image {
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/hero2.jpg");  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 10px black;
+}
+
+.hero-text {
+    color: white;
+    text-shadow: 5px 5px 5px black;
+    text-align: center;
+}
+
+.see-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    font-family: 'Convergence', sans-serif;
+    color: black;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+.see-all:hover {
+    background-color: black;
+    color: white;
+}
+
+.height-100 {
+    height: 100vh;
+}
+
+.height-50 {
+    height: 50vh;
+}
+
+#photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-photo {
+    width: 60vw;
+    border: 1px solid black;
+    margin: 0.5em;
+}
+
+.rating {
+    font-size: 1.5em;
+    margin: 0.5em;
+}
+
+#map-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#map {
+    width: 60vw;
+    height: 60vh;
+    border: none;
+}
+
+#video-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+}
+
+#video {
+    width: 60vw;
+    height: 315px;
+    border: none;
+}
+
+.danger {
+    color: red;
+    font-weight: bolder;
+}
+
+#loading {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-sends {
+    text-align: center;
+}
+
+.hill-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hill-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.hill-name {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    z-index: 1;
+    text-align: center;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 5px 10px black;
+    color: black;
+    padding: 5px;
+    font-family: 'Convergence', sans-serif;
+    text-decoration: none;
+}
+
+.hill-name:hover {
+    background-color: black;
+    color: white;
+}
+
+.all-hills-photo {
+    width: 40vw;
+    border: 1px solid black;
+    margin: 0.5em;
+}
+
+.go-back {
+    font-family: 'Convergence', sans-serif;
+    color: white;
+    border-radius: 5px;
+    background-color: black;
+    border: 1px solid white;
+    padding: 5px;
+    margin: 1em;
+    text-decoration: none;
+}
+
+.go-back:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: black;
+}
+
+#footer-container {
+    padding: 0.5em;
+    font-family: 'Convergence', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 80%;
+    border-right: 3px solid white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.about {
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+p a {
+    color: black;
+}
+
+ul {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1em;
+}
