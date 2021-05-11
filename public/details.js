@@ -5,11 +5,6 @@ const params = window.location.search;
 const paramsList = params.split("=");
 const id = paramsList[1];
 
-let mp = ["https://maps.google.com/maps?q=+", "+,+", "+&hl=en&z=14&amp", ";output=embed"];
-
-mp = ["https://maps.google.com/maps?q=", ",", "&hl=es;z=14&amp;output=embed"]
-
-
 const gql = async (ask) => {
     let query = ask;
 
