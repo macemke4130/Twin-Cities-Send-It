@@ -13,7 +13,7 @@ mp = ["https://maps.google.com/maps?q=", ",", "&hl=es;z=14&amp;output=embed"]
 const gql = async (ask) => {
     let query = ask;
 
-    let graphqlPath = "http://localhost:4000/graphql";
+    let graphqlPath = "./graphql";
     let method = "POST";
     let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
     let body = JSON.stringify({ query });
