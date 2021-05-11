@@ -250,6 +250,11 @@ footer a {
     text-decoration: none;
 }
 
+.sticky-footer {
+    position: absolute;
+    bottom: 0px;
+}
+
 .about {
     width: 80%;
     margin-bottom: 1em;
