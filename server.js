@@ -16,9 +16,5 @@ app.use('/graphql', graphqlHTTP({
 
 app.use(express.static('./public'));
 
-// app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../public/index.html')));
-
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
 console.log('Running a GraphQL API server at localhost:4000/graphql');
-
-// This file requires Type: Module in the Package.json --
