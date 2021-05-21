@@ -40,7 +40,7 @@ export const root = {
         return r[0];
     },
     allHills: async (args, req) => {
-        const r = await query("select * from hills");
+        const r = await query("select * from hills order by id desc");
         return r;
     },
     photos: async (args, req) => {
