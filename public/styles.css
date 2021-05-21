@@ -34,6 +34,7 @@ nav {
 
 nav a {
     font-family: 'Convergence', sans-serif;
+    font-size: 1em;
     color: black;
     border-radius: 5px;
     background-color: white;
@@ -195,8 +196,15 @@ nav a:hover {
     color: black;
     padding: 5px;
     font-family: 'Convergence', sans-serif;
+    font-size: 1em;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .hill-name {
+      font-size: 0.5em;
+    }
+  }
 
 .hill-name:hover {
     background-color: black;

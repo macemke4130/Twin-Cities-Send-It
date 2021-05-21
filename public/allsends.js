@@ -25,7 +25,7 @@ const getAllPhotos = async () => {
         let x = allPhotos[i].hill_id;
 
         if (allPhotos[i + 1].hill_id === x) {
-            // Next photo is of the same hill, delete this entry --
+            // Next photo is of the same hill, set current [i] entry to null --
             allPhotos[i] = null;
         }
     }

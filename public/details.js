@@ -77,10 +77,6 @@ const getVideo = async (hillId) => {
     video.src = r.video.src;
 }
 
-const goBack = () => {
-  window.history.back();
-}
-
 getHill(id);
 getPhotos(id);
 getVideo(id);
