@@ -12,7 +12,7 @@ main {
 
 h1 {
     font-family: 'Convergence', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     text-shadow: 5px 5px 5px black;
 }
 
@@ -200,12 +200,6 @@ nav a:hover {
     text-decoration: none;
 }
 
-@media only screen and (max-width: 600px) {
-    .hill-name {
-      font-size: 0.5em;
-    }
-  }
-
 .hill-name:hover {
     background-color: black;
     color: white;
@@ -276,3 +270,25 @@ ul {
     font-family: 'Roboto', sans-serif;
     margin-bottom: 1em;
 }
+
+@media only screen and (max-width: 600px) {
+    .hill-name {
+      font-size: 0.75em;
+    }
+
+    .all-hills-photo {
+        width: 80vw;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .height-50 {
+        height: 30vh;
+    }
+
+    nav a {
+        font-size: 0.75em;
+    }
+  }
