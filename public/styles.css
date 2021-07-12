@@ -271,6 +271,10 @@ ul {
     margin-bottom: 1em;
 }
 
+.password {
+    padding: 0.5em;
+}
+
 @media only screen and (max-width: 600px) {
     .hill-name {
       font-size: 0.75em;

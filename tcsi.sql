@@ -33,6 +33,7 @@ create table users (
 );
 insert into users (name) values ("Mace");
 select * from users;
+alter table users add column password varchar(64) after name;
 
 create table photos (
 	id int primary key auto_increment,
@@ -41,7 +42,7 @@ create table photos (
 );
 select * from photos;
 insert into photos (hill_id, filename) values
-(15, "P5060194.jpg")
+(1, "P4180152.jpg")
 ;
 
 SELECT DISTINCT hill_id FROM photos;
@@ -54,7 +55,7 @@ src varchar(64)
 select * from videos;
 
 insert into videos (hill_id, src) values
-(15, "https://www.youtube.com/embed/mJ58NEvUwmE")
+(1, "https://www.youtube.com/embed/F7RjdpKvPt0")
 ;
 
 select * from videos where hill_id = 14;

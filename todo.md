@@ -19,6 +19,9 @@
     - Contact Form
     - Mailgun
 - Admin Page
+    - I guess I need an API for the JWT
+    - BCrypt
+    - Encrypted Passwords in Database
     - Photo Uploader
     - CRUD for Hills
     - CRUD for Video Links

@@ -8,6 +8,8 @@ export const schema = buildSchema(`
       photos (hill_id: Int!): [Photos]
       allPhotos: [Photos]
       video (hill_id: Int!): Video
+      user (name: String!, password: String!): User
+      jwt (name: String!): JWT
   }
 
   type Hill {
@@ -32,6 +34,18 @@ export const schema = buildSchema(`
     hill_id: Int
     src: String
 }
+
+  type User {
+    id: Int
+    name: String
+    password: String
+    login: Boolean
+}
+
+type JWT {
+    token: String
+}
+
 `);
 
 export const root = {
@@ -47,14 +61,31 @@ export const root = {
         const r = await query("select * from photos where hill_id = ?", [args.hill_id]);
         return r;
     },
-    allPhotos: async(args, req) => {
+    allPhotos: async (args, req) => {
         const r = await query("select * from photos order by hill_id");
         return r;
     },
     video: async (args, req) => {
         const r = await query("select * from videos where hill_id = ?", [args.hill_id]);
         return r[0];
-    }
+    },
+    user: async (args, req) => {
+        // Authentication --
+        const r = await query("select * from users where name = ?", [args.name]);
+        const inputPassword = args.password;
+        const dbPassword = r[0].password;
+
+        if (inputPassword === dbPassword) {
+            // Success --
+            return r[0];
+        } else {
+            // Denied --
+            return null;
+        }
+    },
+    jwt: async (args, req) => {
+        return args;
+    },
 };
 
 export default {
