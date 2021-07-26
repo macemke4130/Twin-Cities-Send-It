@@ -53,9 +53,9 @@ const admin = async () => {
 
     try {
         const r = await gql(`{user (name: "${username}", password: "${password}") {name}}`);
-
+        console.log(r);
         if (r.user.name === username) {
-            console.log("Success");
+            // Success
             const bodyObject = {
                 name: username
             };

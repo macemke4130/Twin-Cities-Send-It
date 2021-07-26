@@ -9,7 +9,22 @@ export const schema = buildSchema(`
       allPhotos: [Photos]
       video (hill_id: Int!): Video
       user (name: String!, password: String!): User
-      jwt (name: String!): JWT
+  }
+
+  type Mutation {
+      newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
+  }
+
+  type mysqlResponse {
+      fieldCount: Int
+      afffieldCount: Int
+      affectedRows: Int
+      insertId: Int
+      serverStatus: Int
+      warningCount: Int
+      message: String
+      protocol41: Boolean
+      changedRows: Int
   }
 
   type Hill {
@@ -40,10 +55,6 @@ export const schema = buildSchema(`
     name: String
     password: String
     login: Boolean
-}
-
-type JWT {
-    token: String
 }
 
 `);
@@ -83,9 +94,10 @@ export const root = {
             return null;
         }
     },
-    jwt: async (args, req) => {
-        return args;
-    },
+    newHill: async (args) => {
+        const r = await query("insert into hills set ?", [args]);
+        return r;
+    }
 };
 
 export default {

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Convergence&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Twin Cities Send It</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="../newhill.html">New Hill</a>
+            <a href="../panel.html">Edit Hill</a>
+            <a href="#">Log Out</a>
+        </div>
+    </nav>
+    <div class="hero-image height-50">
+        <div class="hero-text">
+            <h1>New Hill</h1>
+        </div>
+    </div>
+    <main>
+        <input id="hillName" type="text" placeholder="Hill Name" size="40">
+        <div>
+            <label>Difficulty: </label><select id="rating">
+                <option value="1">Advanced</option>
+                <option value="2">Intermediate</option>
+                <option value="3">Beginner</option>
+                <option value="0">Not Yet Rated</option>
+            </select>
+        </div>
+        <textarea id="description" rows="5" placeholder="Description"></textarea>
+        <textarea id="mapembed" rows="5" placeholder="iframe code here"></textarea>
+        <input id="maplink" type="text" placeholder="https://goo.gl/maps/wDxkH5ScYceCniUG7" size="40">
+        <button onClick="submitNewHill()">Submit New Hill</button>
+    </main>
+    <script src="./newhill.js"></script>
+</body>
+
+</html>

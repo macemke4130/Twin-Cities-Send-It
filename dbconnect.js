@@ -7,6 +7,7 @@ const pool = createPool(config.mysql);
 export const query = (query, values) => {
     return new Promise((resolve, reject) => {
         const sql = mysql.format(query, values);
+        console.log("SQL: " + sql);
         pool.query(sql, (err, results) => {
             if (err) {
                 reject(err);
