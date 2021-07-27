@@ -23,7 +23,18 @@ const submitNewHill = async () => {
     const rating = Number(document.getElementById("rating").value);
     const mapembed = document.getElementById("mapembed").value;
     const maplink = document.getElementById("maplink").value;
+    const video = document.getElementById("video").value;
 
     const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${maplink}", mapembed: "${mapembed}") { insertId } }`);
     console.log(r.newHill);
+
+    if (video) {
+        newVideo(r.newHill.insertId);
+    }
+}
+
+const newVideo = async (insertId) => {
+    const video = document.getElementById("video").value;
+    const r = await gql(`mutation { newVideo(hill_id: ${insertId}, src: "${video}") { insertId } }`);
+    console.log(r);
 }

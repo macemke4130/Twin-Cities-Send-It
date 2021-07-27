@@ -13,6 +13,7 @@ export const schema = buildSchema(`
 
   type Mutation {
       newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
+      newVideo(hill_id: Int!, src: String!): mysqlResponse
   }
 
   type mysqlResponse {
@@ -84,7 +85,10 @@ export const root = {
         // Authentication --
         const r = await query("select * from users where name = ?", [args.name]);
         const inputPassword = args.password;
+
+        // Needs encryption --
         const dbPassword = r[0].password;
+
 
         if (inputPassword === dbPassword) {
             // Success --
@@ -94,8 +98,13 @@ export const root = {
             return null;
         }
     },
+    // Mutations --
     newHill: async (args) => {
         const r = await query("insert into hills set ?", [args]);
+        return r;
+    },
+    newVideo: async (args) => {
+        const r = await query("insert into videos set ?", [args]);
         return r;
     }
 };

@@ -1,23 +1,15 @@
 # To Do
-- Evironment Variables
-- Media Queries
+- Evironment Variables - Why two config files?
 - Details
     - Panarama Photo Feature?
 - Footer
-    - Social Media
-    - Copyright
     - Donate Button
 - About
-    - Legal
-    - FAQ
-        - 
     - Donate
-    - Credits
-- Heroku Push
-    - Domain Register
+    - Credits?
 - Submit a Send
     - Contact Form
-    - Mailgun
+    - Mailgun?
 - Admin Page
     - I guess I need an API for the JWT
     - BCrypt
