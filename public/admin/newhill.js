@@ -29,12 +29,11 @@ const submitNewHill = async () => {
     console.log(r.newHill);
 
     if (video) {
-        newVideo(r.newHill.insertId);
+        newVideo(r.newHill.insertId, video);
     }
 }
 
-const newVideo = async (insertId) => {
-    const video = document.getElementById("video").value;
-    const r = await gql(`mutation { newVideo(hill_id: ${insertId}, src: "${video}") { insertId } }`);
-    console.log(r);
+const newVideo = async (insertId, src) => {
+    const r = await gql(`mutation { newVideo(hill_id: ${insertId}, src: "${src}") { insertId } }`);
+    console.log(r.newVideo.insertId);
 }
