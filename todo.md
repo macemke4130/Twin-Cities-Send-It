@@ -3,7 +3,7 @@
 - All Hills
     - GraphQL needs to look for "where _isactive = 1"
 - Details
-    - Panarama Photo Feature?
+    - ?preview=1 for showing hills that are not active
 - Footer
     - Donate Button
 - About
@@ -14,6 +14,7 @@
     - Mailgun?
 - Admin Page
     - Link to admin from public
+    - Descrepency between inputing and populating src from iframes on New Hill and Edit Hill
     - Create modals to replace alerts
     - Activate and Deactivate hills (photos and videos?)
     - Update Hill Page edit.html?id=

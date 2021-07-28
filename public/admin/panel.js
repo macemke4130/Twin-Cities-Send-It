@@ -32,7 +32,7 @@ const getAllHills = async () => {
 
         // Create Link --
         let newLink = document.createElement('a');
-        newLink.href = "/edit.html?id=" + allHills[i].id;
+        newLink.href = "./edit.html?id=" + allHills[i].id;
         newLink.className = "hill-link";
 
         // Create Hill Title Text --
