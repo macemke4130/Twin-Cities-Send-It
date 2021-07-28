@@ -14,6 +14,7 @@ export const schema = buildSchema(`
   type Mutation {
       newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
       newVideo(hill_id: Int!, src: String!): mysqlResponse
+      newPhoto(hill_id: Int!, filename: String!): mysqlResponse
   }
 
   type mysqlResponse {
@@ -105,6 +106,10 @@ export const root = {
     },
     newVideo: async (args) => {
         const r = await query("insert into videos set ?", [args]);
+        return r;
+    },
+    newPhoto: async (args) => {
+        const r = await query("insert into photos set ?", [args]);
         return r;
     }
 };
