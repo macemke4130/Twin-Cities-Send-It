@@ -17,6 +17,7 @@
     "jose": "^3.14.0",
     "jose-node-esm-runtime": "^3.14.0",
     "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
     "mysql": "^2.18.1"
   },
   "type": "module"
