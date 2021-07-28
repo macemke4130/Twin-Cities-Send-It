@@ -21,16 +21,22 @@ const submitNewHill = async () => {
     const description = document.getElementById("description").value;
     const added_by = 1; // Temporary Hard Code. Should get from login mutation --
     const rating = Number(document.getElementById("rating").value);
-    const mapembed = document.getElementById("mapembed").value;
+    let mapembed = document.getElementById("mapembed").value;
     const maplink = document.getElementById("maplink").value;
-    const video = document.getElementById("video").value;
+    let video = document.getElementById("video").value;
 
-    const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${maplink}", mapembed: "${mapembed}") { insertId } }`);
+    // Format mapembed iframe for database --
+    mapembed = mapembed.split(`src="`)[1];
+    mapembed = mapembed.split(`"`)[0];
+
+    // Format video iframe for database --
+    video = video.split(`src="`)[1];
+    video = video.split(`"`)[0];
+
+    // const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${maplink}", mapembed: "${mapembed}") { insertId } }`);
     console.log(r.newHill);
 
-    if (video) {
-        newVideo(r.newHill.insertId, video);
-    }
+    if (video) newVideo(r.newHill.insertId, video);
 }
 
 const newVideo = async (insertId, src) => {

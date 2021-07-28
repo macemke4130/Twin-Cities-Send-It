@@ -13,7 +13,11 @@
     - Contact Form
     - Mailgun?
 - Admin Page
+    - Link to admin from public
+    - Create modals to replace alerts
     - Activate and Deactivate hills (photos and videos?)
+    - Update Hill Page edit.html?id=
+    - Try Catch for photos and new hill pages
     - I guess I need an API for the JWT?
     - BCrypt
     - Encrypted Passwords in Database
