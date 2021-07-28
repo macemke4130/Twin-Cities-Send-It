@@ -1,5 +1,7 @@
 # To Do
 - Evironment Variables - Why two config files?
+- All Hills
+    - GraphQL needs to look for "where _isactive = 1"
 - Details
     - Panarama Photo Feature?
 - Footer
@@ -11,9 +13,12 @@
     - Contact Form
     - Mailgun?
 - Admin Page
-    - I guess I need an API for the JWT
+    - Activate and Deactivate hills (photos and videos?)
+    - I guess I need an API for the JWT?
     - BCrypt
     - Encrypted Passwords in Database
     - Photo Uploader
     - CRUD for Hills
     - CRUD for Video Links
+- Database
+    - Hills needs an _isactive boolean

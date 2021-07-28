@@ -39,6 +39,12 @@ const upload = async (e) => {
     const newPhoto = e.srcElement.childNodes[1].files[0];
     const hillId = Number(document.getElementById("hillId").value);
 
+    // Validation --
+    if (hillId === 0 || newPhoto === undefined) {
+        alert("All fields required.");
+        return;
+    }
+
     // Preparing the photo for upload --
     const data = new FormData();
     data.append("img", newPhoto);
