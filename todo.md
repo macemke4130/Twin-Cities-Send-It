@@ -1,7 +1,7 @@
 # To Do
 - Evironment Variables - Why two config files?
 - All Hills
-    - GraphQL needs to look for "where _isactive = 1"
+    - GraphQL needs to look for "where _isactive = 1" (Can I use the 0 rating?)
 - Details
     - ?preview=1 for showing hills that are not active
 - Footer
@@ -15,7 +15,7 @@
 - Admin Page
     - Link to admin from public
     - Descrepency between inputing and populating src from iframes on New Hill and Edit Hill
-    - Create modals to replace alerts
+    - Fix modal background height
     - Activate and Deactivate hills (photos and videos?)
     - Update Hill Page edit.html?id=
     - Try Catch for photos and new hill pages
@@ -25,5 +25,10 @@
     - Photo Uploader
     - CRUD for Hills
     - CRUD for Video Links
+    - mysql join for photos and videos. Ditch the multiple fetch requests.
+    - show deleted hills?
 - Database
-    - Hills needs an _isactive boolean
+    - Hills needs an _isactive boolean (Can I use the 0 rating?)
+    - Do away with video table. Insert video field in hills table.
+- GraphQL
+    - Needs Update Hill mutation

@@ -13,6 +13,13 @@
 </head>
 
 <body>
+    <div id="alert-container">
+        <div id="alert">
+            <p id="alert-message"></p>
+            <button id="confirmDelete" onclick="deleteHill()">Yes</button>
+            <button id="denyDelete" onclick="clearModal()">No</button>
+        </div>
+    </div>
     <nav>
         <div class="nav-container">
             <a href="./newhill.html">New Hill</a>
@@ -41,6 +48,7 @@
         <label>Map Link: <input id="mapLinkInput" type="text" placeholder="https://goo.gl/maps/wDxkH5ScYceCniUG7" size="40" /></label>
         <textarea id="videoInput" rows="5" placeholder="Video iframe"></textarea>
         <button onClick="editHill()">Submit New Hill</button>
+        <button id="delete" onClick="deleteConfirm()">Delete Hill</button>
     </main>
     <script src="./edithill.js"></script>
 </body>

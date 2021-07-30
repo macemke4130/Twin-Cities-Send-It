@@ -13,6 +13,8 @@ export const schema = buildSchema(`
 
   type Mutation {
       newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
+      editHill(id: Int!, name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
+      deleteHill(id: Int!): mysqlResponse
       newVideo(hill_id: Int!, src: String!): mysqlResponse
       newPhoto(hill_id: Int!, filename: String!): mysqlResponse
   }
@@ -31,6 +33,7 @@ export const schema = buildSchema(`
 
   type Hill {
       id: Int
+      is_active: Int
       name: String
       description: String
       added_by: Int
@@ -67,7 +70,7 @@ export const root = {
         return r[0];
     },
     allHills: async (args, req) => {
-        const r = await query("select * from hills order by id desc");
+        const r = await query("select * from hills where is_active = 1 order by id desc");
         return r;
     },
     photos: async (args, req) => {
@@ -102,6 +105,14 @@ export const root = {
     // Mutations --
     newHill: async (args) => {
         const r = await query("insert into hills set ?", [args]);
+        return r;
+    },
+    editHill: async (args) => {
+        const r = await query("update hills set ? where id = ?", [args, args.id]);
+        return r;
+    },
+    deleteHill: async (args) => {
+        const r = await query("update hills set is_active = 0 where id = ?", [args.id]);
         return r;
     },
     newVideo: async (args) => {

@@ -7,12 +7,55 @@ label, button {
     font-family: 'Roboto', sans-serif;
 }
 
+#delete, #confirmDelete {
+    color: white;
+    background-color: red;
+}
+
 textarea {
     width: 80%;
 }
 
 label {
     display: inline;
+}
+
+#denyDelete {
+    color: white;
+    background-color: black;
+}
+
+#alert-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#alert {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    border: 1px solid black;
+    border-radius: 1em;
+    background-color: white;
+}
+
+#alert-message {
+    font-size: 2em;
+    font-weight: 400;
+    text-align: center;
+    color: black;
 }
 
 @media only screen and (max-width: 600px) {

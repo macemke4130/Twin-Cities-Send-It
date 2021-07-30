@@ -65,22 +65,44 @@ const editHill = async () => {
     }
 
     try {
-        const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}") { insertId } }`);
-        if (video) editVideo(r.newHill.insertId, video);
+        const r = await gql(`mutation { editHill(id: ${id}, name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}") { insertId } }`);
+        // if (video) editVideo(r.newHill.insertId, video);
 
-        window.open("../details.html?id=" + r.newHill.insertId);
-        window.location.href = "./panel.html";
+        window.open("../details.html?id=" + id);
+        // window.location.href = "./panel.html";
     } catch (e) {
         console.error(e);
     }
 }
 
 const editVideo = async (insertId, src) => {
+    // Needs video database to be absorbed by the hills database --
     try {
         const r = await gql(`mutation { newVideo(hill_id: ${insertId}, src: "${src}") { insertId } }`);
         console.log(r.newVideo.insertId);
     } catch (e) {
         console.error(0);
+    }
+}
+
+const bg = document.getElementById("alert-container");
+const alertMessage = document.getElementById("alert-message");
+const deleteConfirm = () => {
+    bg.style.display = "flex";
+    alertMessage.innerText = "Delete Hill?";
+}
+
+const clearModal = () => {
+    bg.style.display = "none";
+}
+
+const deleteHill = async () => {
+    // Need confirmation modal function --
+    try {
+        const r = await gql(`mutation { deleteHill(id: ${id}) { affectedRows } }`);
+        if (r) window.location.href = "./panel.html";
+    } catch (e) {
+        console.error(e);
     }
 }
 

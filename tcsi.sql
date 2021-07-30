@@ -22,7 +22,8 @@ insert into hills (name, description, added_by, maplink, mapembed, gps, rating) 
 "44.934594, -93.083593",
 1
 );
-alter table hills add mapembed varchar(1000) after maplink;
+alter table hills add is_active tinyint after id;
+update hills set is_active = 1 where added_by = 1;
 
 select * from hills;
 
