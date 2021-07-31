@@ -27,7 +27,6 @@ update hills set is_active = 1 where added_by = 1;
 
 select * from hills;
 
-
 create table users (
 	id int primary key auto_increment,
     name varchar(32)

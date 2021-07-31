@@ -1,4 +1,4 @@
-#hillNameInput, #ratingInput, #descriptionInput, #mapembedInput, #mapLinkInput, #videoInput, button {
+#hillNameInput, #is_active, #ratingInput, #descriptionInput, #mapembedInput, #mapLinkInput, #videoInput, button {
     padding: 0.5em;
     margin: 0.5em;
 }

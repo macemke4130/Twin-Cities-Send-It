@@ -1,3 +1,5 @@
+import * as utils from '../utils.js';
+
 // Redirect if not logged in --
 const token = "Fake JWT";
 if (localStorage.getItem("Token") != token) {
@@ -8,20 +10,19 @@ const params = window.location.search;
 const paramsList = params.split("=");
 const id = paramsList[1];
 
-const gql = async (ask) => {
-    let query = ask;
-
-    let graphqlPath = "../graphql";
-    let method = "POST";
-    let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    let body = JSON.stringify({ query });
-    let r = await fetch(graphqlPath, { method, headers, body });
-    r = await r.json();
-    return r.data;
-}
+// const gql = async (ask) => {
+//     let query = ask;
+//     let graphqlPath = "../graphql";
+//     let method = "POST";
+//     let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+//     let body = JSON.stringify({ query });
+//     let r = await fetch(graphqlPath, { method, headers, body });
+//     r = await r.json();
+//     return r.data;
+// }
 
 const getHill = async (hillId) => {
-    const r = await gql(`{hillInfo (id: ${hillId}) { id, name, description, maplink, mapembed, rating }}`);
+    const r = await utils.gql(`{hillInfo (id: ${hillId}) { id, name, description, maplink, mapembed, rating }}`, 1);
     const hill = r.hillInfo;
 
     console.table(hill);
@@ -36,7 +37,7 @@ const getHill = async (hillId) => {
 }
 
 const getVideo = async (hillId) => {
-    const r = await gql(`{video (hill_id: ${hillId}){ src }}`);
+    const r = await utils.gql(`{video (hill_id: ${hillId}){ src }}`, 1);
 
     if (r.video === null) return;
 

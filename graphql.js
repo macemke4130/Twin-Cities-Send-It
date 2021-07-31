@@ -9,6 +9,7 @@ export const schema = buildSchema(`
       allPhotos: [Photos]
       video (hill_id: Int!): Video
       user (name: String!, password: String!): User
+      mood: String
   }
 
   type Mutation {
@@ -41,6 +42,7 @@ export const schema = buildSchema(`
       mapembed: String
       gps: String
       rating: Int
+      video: String
   }
 
   type Photos {
@@ -93,7 +95,6 @@ export const root = {
         // Needs encryption --
         const dbPassword = r[0].password;
 
-
         if (inputPassword === dbPassword) {
             // Success --
             return r[0];
@@ -101,6 +102,9 @@ export const root = {
             // Denied --
             return null;
         }
+    },
+    mood: () => {
+        return "Feeling Sendy"
     },
     // Mutations --
     newHill: async (args) => {

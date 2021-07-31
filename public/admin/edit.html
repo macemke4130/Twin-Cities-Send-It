@@ -35,6 +35,10 @@
     </div>
     <main>
         <label>Hill Name: <input id="hillNameInput" type="text" placeholder="Super Sick Send" size="40" /></label>
+        <label>Visibility: <select id="is_active">
+            <option value="1">Active</option>
+            <option value="0">Inactive</option>
+        </select></label>
         <div>
             <label>Difficulty: </label><select id="ratingInput">
                 <option value="1">Beginner</option>
@@ -50,7 +54,7 @@
         <button onClick="editHill()">Submit New Hill</button>
         <button id="delete" onClick="deleteConfirm()">Delete Hill</button>
     </main>
-    <script src="./edithill.js"></script>
+    <script type="module" src="./edithill.js"></script>
 </body>
 
 </html>
