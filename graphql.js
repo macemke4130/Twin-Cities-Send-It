@@ -9,6 +9,7 @@ export const schema = buildSchema(`
       allPhotos: [Photos]
       user (name: String!, password: String!): User
       mood: String
+      getHillWithPhotos(id: Int!): TestResult
   }
 
   type Mutation {
@@ -55,6 +56,19 @@ export const schema = buildSchema(`
     password: String
     login: Boolean
 }
+  type TestResult {
+    id: Int
+    is_active: Int
+    name: String
+    description: String
+    added_by: Int
+    maplink: String
+    mapembed: String
+    gps: String
+    rating: Int
+    video: String
+    photos: [Photos]
+  }
 
 `);
 
@@ -97,6 +111,10 @@ export const root = {
     },
     mood: () => {
         return "Feeling Sendy"
+    },
+    getHillWithPhotos: async (args) => {
+        const r = await query("select * from hills join photos on photos.hill_id = hills.id where hills.id = ?", [args.id]);
+        return r[0];
     },
     // Mutations --
     newHill: async (args) => {

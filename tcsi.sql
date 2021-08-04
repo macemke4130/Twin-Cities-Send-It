@@ -22,7 +22,7 @@ insert into hills (name, description, added_by, maplink, mapembed, gps, rating) 
 "44.934594, -93.083593",
 1
 );
-alter table hills add is_active tinyint after id;
+alter table hills add video varchar(64) after gps;
 update hills set is_active = 1 where added_by = 1;
 
 select * from hills;
@@ -59,3 +59,5 @@ insert into videos (hill_id, src) values
 ;
 
 select * from videos where hill_id = 14;
+
+select * from hills join photos on photos.hill_id = hills.id where hills.id = 7;

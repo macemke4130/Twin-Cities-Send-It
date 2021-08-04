@@ -10,14 +10,18 @@
 - Submit a Send
     - Contact Form
     - Mailgun?
-- Admin Page
-    - I guess I need an API for the JWT? Maybe.
+- Admin
+    - Photos
+        - Edit and delete photos page
+        - Show preview of what you're about to upload
+    - Auth
+        - I guess I need an API for the JWT? Maybe.
+        - BCrypt
+        - Encrypted Passwords in Database
     - Link to admin from public
     - Descrepency between inputing and populating src from iframes on New Hill and Edit Hill
     - Fix modal background height
     - Try Catch for photos and new hill pages
-    - BCrypt
-    - Encrypted Passwords in Database
     - mysql join for photos and videos. Ditch the multiple fetch requests.
     - show deleted hills? Somewhere. Dedicated page
 - Database
