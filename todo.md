@@ -1,7 +1,5 @@
 # To Do
-- Evironment Variables - Why two config files?
-- All Hills
-    - GraphQL needs to look for "where _isactive = 1" (Can I use the 0 rating?)
+- Evironment Variables - Why do I have two config files?
 - Details
     - ?preview=1 for showing hills that are not active
 - Footer
@@ -13,22 +11,14 @@
     - Contact Form
     - Mailgun?
 - Admin Page
+    - I guess I need an API for the JWT? Maybe.
     - Link to admin from public
     - Descrepency between inputing and populating src from iframes on New Hill and Edit Hill
     - Fix modal background height
-    - Activate and Deactivate hills (photos and videos?)
-    - Update Hill Page edit.html?id=
     - Try Catch for photos and new hill pages
-    - I guess I need an API for the JWT?
     - BCrypt
     - Encrypted Passwords in Database
-    - Photo Uploader
-    - CRUD for Hills
-    - CRUD for Video Links
     - mysql join for photos and videos. Ditch the multiple fetch requests.
     - show deleted hills? Somewhere. Dedicated page
 - Database
-    - Hills needs an _isactive boolean (Can I use the 0 rating?)
     - Do away with video table. Insert video field in hills table.
-- GraphQL
-    - Needs Update Hill mutation
