@@ -1,25 +1,15 @@
 console.log("Created by Lucas Mace");
 console.log("lucasmace4130@gmail.com");
 
+import { gql } from "./utils.js";
+
 const params = window.location.search;
 const paramsList = params.split("=");
 const id = paramsList[1];
 
-const gql = async (ask) => {
-    let query = ask;
-
-    let graphqlPath = "./graphql";
-    let method = "POST";
-    let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    let body = JSON.stringify({ query });
-    let r = await fetch(graphqlPath, { method, headers, body });
-    r = await r.json();
-    return r.data;
-}
-
 let hill;
 const getHill = async (hillId) => {
-    const r = await gql(`{hillInfo (id: ${hillId}) { id, name, description, maplink, mapembed, gps, rating }}`);
+    const r = await gql(`{hillInfo (id: ${hillId}) { id, name, description, maplink, mapembed, rating, video }}`);
     hill = r.hillInfo;
 
     let rating;
@@ -45,6 +35,13 @@ const getHill = async (hillId) => {
     document.getElementById('map').src = hill.mapembed;
 
     document.title = hill.name + " - TCSI";
+
+    if (hill.video === null) {
+        const vDiv = document.getElementById('video-section');
+        vDiv.remove();
+        return
+    }
+    document.getElementById('video').src = hill.video;
 }
 
 const getPhotos = async (hillId) => {
@@ -64,19 +61,5 @@ const getPhotos = async (hillId) => {
     }
 }
 
-const getVideo = async (hillId) => {
-    const r = await gql(`{video (hill_id: ${hillId}){ src }}`);
-    
-    if (r.video === null) {
-        const vDiv = document.getElementById('video-section');
-        vDiv.remove();
-        return;
-    }
-
-    const video = document.getElementById('video');
-    video.src = r.video.src;
-}
-
 getHill(id);
 getPhotos(id);
-getVideo(id);

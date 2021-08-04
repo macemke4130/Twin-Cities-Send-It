@@ -17,6 +17,7 @@ const gql = async (ask) => {
 }
 
 const submitNewHill = async () => {
+    const is_active = Number(document.getElementById("is_active").value);
     const hillName = document.getElementById("hillNameInput").value;
     const description = document.getElementById("descriptionInput").value;
     const added_by = 1; // Temporary Hard Code. Should get from login mutation --
@@ -24,6 +25,10 @@ const submitNewHill = async () => {
     let mapembed = document.getElementById("mapembedInput").value;
     const mapLink = document.getElementById("mapLinkInput").value;
     let video = document.getElementById("videoInput").value;
+
+    // Should write conditional statement for
+    // the following format operations in
+    // case user inputs just the source string --
 
     // Format mapembed iframe for database --
     mapembed = mapembed.split(`src="`)[1];
@@ -34,21 +39,11 @@ const submitNewHill = async () => {
     video = video.split(`"`)[0];
 
     try {
-        const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}") { insertId } }`);
-        if (video) newVideo(r.newHill.insertId, video);
+        const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { insertId } }`);
 
         window.open("../details.html?id=" + r.newHill.insertId);
         window.location.href = "./panel.html";
     } catch (e) {
         console.error(e);
-    }
-}
-
-const newVideo = async (insertId, src) => {
-    try {
-        const r = await gql(`mutation { newVideo(hill_id: ${insertId}, src: "${src}") { insertId } }`);
-        console.log(r.newVideo.insertId);
-    } catch (e) {
-        console.error(0);
     }
 }

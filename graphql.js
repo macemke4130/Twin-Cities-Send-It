@@ -7,16 +7,14 @@ export const schema = buildSchema(`
       allHills: [Hill]
       photos (hill_id: Int!): [Photos]
       allPhotos: [Photos]
-      video (hill_id: Int!): Video
       user (name: String!, password: String!): User
       mood: String
   }
 
   type Mutation {
-      newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
-      editHill(id: Int!, name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!): mysqlResponse
+      newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!, video: String): mysqlResponse
+      editHill(id: Int!, name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!, video: String): mysqlResponse
       deleteHill(id: Int!): mysqlResponse
-      newVideo(hill_id: Int!, src: String!): mysqlResponse
       newPhoto(hill_id: Int!, filename: String!): mysqlResponse
   }
 
@@ -50,12 +48,6 @@ export const schema = buildSchema(`
       hill_id: Int
       filename: String
   }
-
-  type Video {
-    id: Int
-    hill_id: Int
-    src: String
-}
 
   type User {
     id: Int
@@ -112,15 +104,12 @@ export const root = {
         return r;
     },
     editHill: async (args) => {
+        console.log(args);
         const r = await query("update hills set ? where id = ?", [args, args.id]);
         return r;
     },
     deleteHill: async (args) => {
         const r = await query("update hills set is_active = 0 where id = ?", [args.id]);
-        return r;
-    },
-    newVideo: async (args) => {
-        const r = await query("insert into videos set ?", [args]);
         return r;
     },
     newPhoto: async (args) => {

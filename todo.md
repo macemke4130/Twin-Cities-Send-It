@@ -26,7 +26,7 @@
     - CRUD for Hills
     - CRUD for Video Links
     - mysql join for photos and videos. Ditch the multiple fetch requests.
-    - show deleted hills?
+    - show deleted hills? Somewhere. Dedicated page
 - Database
     - Hills needs an _isactive boolean (Can I use the 0 rating?)
     - Do away with video table. Insert video field in hills table.

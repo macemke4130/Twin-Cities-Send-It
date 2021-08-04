@@ -7,7 +7,7 @@ label, button {
     font-family: 'Roboto', sans-serif;
 }
 
-#delete, #confirmDelete {
+#deleteHill, #confirmDelete {
     color: white;
     background-color: red;
 }

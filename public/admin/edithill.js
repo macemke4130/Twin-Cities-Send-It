@@ -1,4 +1,4 @@
-import * as utils from '../utils.js';
+import { gql } from "../utils.js";
 
 // Redirect if not logged in --
 const token = "Fake JWT";
@@ -10,41 +10,25 @@ const params = window.location.search;
 const paramsList = params.split("=");
 const id = paramsList[1];
 
-// const gql = async (ask) => {
-//     let query = ask;
-//     let graphqlPath = "../graphql";
-//     let method = "POST";
-//     let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-//     let body = JSON.stringify({ query });
-//     let r = await fetch(graphqlPath, { method, headers, body });
-//     r = await r.json();
-//     return r.data;
-// }
-
 const getHill = async (hillId) => {
-    const r = await utils.gql(`{hillInfo (id: ${hillId}) { id, name, description, maplink, mapembed, rating }}`, 1);
+    const r = await gql(`{hillInfo (id: ${hillId}) { id, is_active, name, description, maplink, mapembed, rating, video }}`, "admin");
     const hill = r.hillInfo;
 
     console.table(hill);
 
-    document.getElementById('hillNameInput').value = hill.name;
+    document.getElementById("is_active").value = hill.is_active;
+    document.getElementById("hillNameInput").value = hill.name;
     document.getElementById("ratingInput").value = hill.rating;
-    document.getElementById('descriptionInput').innerText = hill.description;
-    document.getElementById('mapLinkInput').value = hill.maplink;
-    document.getElementById('mapembedInput').innerText = hill.mapembed;
+    document.getElementById("descriptionInput").innerText = hill.description;
+    document.getElementById("mapLinkInput").value = hill.maplink;
+    document.getElementById("mapembedInput").innerText = hill.mapembed;
+    document.getElementById("videoInput").innerText = hill.video;
 
     document.title = hill.name + " - TCSI";
 }
 
-const getVideo = async (hillId) => {
-    const r = await utils.gql(`{video (hill_id: ${hillId}){ src }}`, 1);
-
-    if (r.video === null) return;
-
-    document.getElementById('videoInput').innerText = r.video.src;
-}
-
 const editHill = async () => {
+    const is_active = Number(document.getElementById("is_active").value);
     const hillName = document.getElementById("hillNameInput").value;
     const description = document.getElementById("descriptionInput").value;
     const added_by = 1; // Temporary Hard Code. Should get from login mutation --
@@ -66,23 +50,21 @@ const editHill = async () => {
     }
 
     try {
-        const r = await gql(`mutation { editHill(id: ${id}, name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}") { insertId } }`);
-        // if (video) editVideo(r.newHill.insertId, video);
+        const r = await gql(`mutation { editHill(id: ${id}, is_active: ${is_active} name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { insertId } }`, "admin");
 
         window.open("../details.html?id=" + id);
-        // window.location.href = "./panel.html";
+        window.location.href = "./panel.html";
     } catch (e) {
         console.error(e);
     }
 }
 
-const editVideo = async (insertId, src) => {
-    // Needs video database to be absorbed by the hills database --
+const deleteHill = async () => {
     try {
-        const r = await gql(`mutation { newVideo(hill_id: ${insertId}, src: "${src}") { insertId } }`);
-        console.log(r.newVideo.insertId);
+        const r = await gql(`mutation { deleteHill(id: ${id}) { affectedRows } }`, "admin");
+        if (r) window.location.href = "./panel.html";
     } catch (e) {
-        console.error(0);
+        console.error(e);
     }
 }
 
@@ -97,15 +79,9 @@ const clearModal = () => {
     bg.style.display = "none";
 }
 
-const deleteHill = async () => {
-    // Need confirmation modal function --
-    try {
-        const r = await gql(`mutation { deleteHill(id: ${id}) { affectedRows } }`);
-        if (r) window.location.href = "./panel.html";
-    } catch (e) {
-        console.error(e);
-    }
-}
+document.getElementById("editHill").onclick = editHill;
+document.getElementById("deleteHill").onclick = deleteConfirm;
+document.getElementById("confirmDelete").onclick = deleteHill;
+document.getElementById("denyDelete").onclick = clearModal;
 
 getHill(id);
-getVideo(id);

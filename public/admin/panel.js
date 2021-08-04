@@ -4,21 +4,11 @@ if (localStorage.getItem("Token") != token) {
     window.location.href = "/";
 }
 
-const gql = async (ask) => {
-    let query = ask;
-
-    let graphqlPath = "../graphql";
-    let method = "POST";
-    let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    let body = JSON.stringify({ query });
-    let r = await fetch(graphqlPath, { method, headers, body });
-    r = await r.json();
-    return r.data;
-}
+import { gql } from "../utils.js";
 
 const getAllHills = async () => {
     // Fetch All Hills Data --
-    const r = await gql(`{allHills { id, name }}`);
+    const r = await gql(`{allHills { id, name }}`, "admin");
     const allHills = r.allHills;
 
     // Input Source for DOM Manipulation --
