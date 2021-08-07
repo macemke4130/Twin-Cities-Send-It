@@ -15,8 +15,6 @@ const getHill = async (hillId) => {
     if (r.photos.length >= 1) {
         photos = r.photos;
         loadPhotos();
-    } else {
-        console.log("No Photos.");
     }
 
     hill = r.hillInfo;
