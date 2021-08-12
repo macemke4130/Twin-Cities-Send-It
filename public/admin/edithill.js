@@ -1,10 +1,8 @@
 import { gql } from "../utils.js";
 
 // Redirect if not logged in --
-const token = "Fake JWT";
-if (localStorage.getItem("Token") != token) {
-    window.location.href = "/";
-}
+const token = localStorage.getItem("Token");
+if (!token) { window.location.href = "/";}
 
 const params = window.location.search;
 const paramsList = params.split("=");

@@ -11,6 +11,7 @@
     - Contact Form
     - Mailgun?
 - Admin
+    - GraphQL authenticate JWT token before admin api calls
     - Create "View Live" button on Admin Panel
     - Visibility Boolean on Admin Panel
     - Photos

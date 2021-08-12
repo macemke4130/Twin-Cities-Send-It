@@ -1,8 +1,6 @@
 // Redirect if not logged in --
-const token = "Fake JWT";
-if (localStorage.getItem("Token") != token) {
-    window.location.href = "/";
-}
+const token = localStorage.getItem("Token");
+if (!token) { window.location.href = "/";}
 
 const gql = async (ask) => {
     let query = ask;
