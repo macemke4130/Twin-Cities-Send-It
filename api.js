@@ -24,11 +24,10 @@ router.post('/auth', async (req, res) => {
         const token = req.body.token;
         const auth = await jwt.default.verify(token, privateKey, function(err, decoded) {
             if (err) {
-                res.json(err);
+                res.json({data: err.message});
                 return;
             } else {
-                console.log(decoded);
-                res.json(decoded);
+                res.json({data: decoded.name});
             }
         });
     } catch (e) {

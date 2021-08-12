@@ -52,3 +52,20 @@ export const apiService = async (uri, method = "GET", body) => {
         console.error(e);
     }
 };
+
+export const auth = async () => {
+    const bodyObject = {
+        token: localStorage.getItem("Token")
+    };
+    const r = await apiService("/auth", "POST", bodyObject);
+    
+    if (r.data === "jwt expired") {
+        localStorage.removeItem("Token");
+        window.location.href = "../";
+        return;
+    } else if (r.data === "jwt malformed") {
+        localStorage.removeItem("Token");
+        window.location.href = "../";
+        return;
+    }
+}

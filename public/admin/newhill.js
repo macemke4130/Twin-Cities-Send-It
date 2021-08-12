@@ -1,18 +1,7 @@
+import { gql, auth } from "../utils.js";
+
 // Redirect if not logged in --
-const token = localStorage.getItem("Token");
-if (!token) { window.location.href = "/";}
-
-const gql = async (ask) => {
-    let query = ask;
-
-    let graphqlPath = "../graphql";
-    let method = "POST";
-    let headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    let body = JSON.stringify({ query });
-    let r = await fetch(graphqlPath, { method, headers, body });
-    r = await r.json();
-    return r.data;
-}
+auth();
 
 const submitNewHill = async () => {
     const is_active = Number(document.getElementById("is_active").value);
@@ -37,11 +26,14 @@ const submitNewHill = async () => {
     video = video.split(`"`)[0];
 
     try {
-        const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { insertId } }`);
-
-        window.open("../details.html?id=" + r.newHill.insertId);
-        window.location.href = "./panel.html";
+        const r = await gql(`mutation { newHill(name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { insertId } }`, "admin");
+        if (r) {
+            window.open("../details.html?id=" + r.newHill.insertId);
+            window.location.href = "./panel.html";
+        }
     } catch (e) {
         console.error(e);
     }
 }
+
+document.getElementById("submitNew").onclick = submitNewHill;

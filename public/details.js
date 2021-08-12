@@ -43,7 +43,7 @@ const getHill = async (hillId) => {
 
     document.title = hill.name + " - TCSI";
 
-    if (hill.video === null) {
+    if (hill.video === null || hill.video === "") {
         const vDiv = document.getElementById('video-section');
         vDiv.remove();
         return

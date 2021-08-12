@@ -1,8 +1,7 @@
-// Redirect if not logged in --
-const token = localStorage.getItem("Token");
-if (!token) { window.location.href = "/";}
+import { gql, auth } from "../utils.js";
 
-import { gql } from "../utils.js";
+// Redirect if not logged in --
+auth();
 
 const getAllHills = async () => {
     // Fetch All Hills Data --
@@ -50,7 +49,7 @@ const getAllHills = async () => {
         hillDiv.appendChild(newLink);
         hillDiv.appendChild(controlDiv);
         controlDiv.appendChild(editBtn);
-        controlDiv.appendChild(liveBtn)
+        controlDiv.appendChild(liveBtn);
         newLink.appendChild(newSpan);
         div.appendChild(hillDiv);
     }
