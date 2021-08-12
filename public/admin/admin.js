@@ -60,6 +60,7 @@ const admin = async () => {
                 name: username
             };
             const jwt = await apiService("/jwt", "POST", bodyObject);
+            console.log(jwt);
             if (jwt) {
                 localStorage.setItem("Token", jwt);
                 window.location.href = "./panel.html";

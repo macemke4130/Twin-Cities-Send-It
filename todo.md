@@ -11,7 +11,8 @@
     - Contact Form
     - Mailgun?
 - Admin
-    - Create "View Live" button on admin panel
+    - Create "View Live" button on Admin Panel
+    - Visibility Boolean on Admin Panel
     - Photos
         - Edit and delete photos page
         - Show preview of what you're about to upload
