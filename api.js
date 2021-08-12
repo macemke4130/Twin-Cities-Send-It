@@ -11,7 +11,7 @@ router.post('/jwt', async (req, res) => {
         const token = await jwt.default.sign({
             data: username
         }, privateKey,
-            { expiresIn: '60s' });
+            { expiresIn: '1d' });
         console.log(token);
         res.json(token);
     } catch (e) {

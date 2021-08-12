@@ -10,16 +10,15 @@
 - Submit a Send
     - Contact Form
     - Mailgun?
+- GQL
+    - Is there a way to populate MySQL calls with the args variable instead of the * ?
 - Admin
-    - GraphQL authenticate JWT token before admin api calls
-        - Authenticate token before mutations call. If success, call mutation. Else, redirect.
     - Create "View Live" button on Admin Panel
     - Visibility Boolean on Admin Panel
     - Photos
         - Edit and delete photos page
         - Show preview of what you're about to upload
     - Auth
-        - I guess I need an API for the JWT? Maybe.
         - BCrypt
         - Encrypted Passwords in Database
     - Link to admin from public
