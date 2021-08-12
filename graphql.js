@@ -4,7 +4,7 @@ import { query } from "./dbconnect.js";
 export const schema = buildSchema(`
   type Query {
       hillInfo (id: Int!): Hill
-      allHills: [Hill]
+      allHills (admin: Boolean): [Hill]
       photos (hill_id: Int!): [Photos]
       allPhotos: [Photos]
       user (name: String!, password: String!): User
@@ -63,6 +63,11 @@ export const root = {
         return r[0];
     },
     allHills: async (args, req) => {
+        if (args.admin === true) {
+            // Used for admin panel to see unactive hills --
+            const r = await query("select * from hills order by id desc");
+            return r;
+        }
         const r = await query("select * from hills where is_active = 1 order by id desc");
         return r;
     },

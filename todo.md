@@ -13,7 +13,6 @@
 - GQL
     - Is there a way to populate MySQL calls with the args variable instead of the * ?
 - Admin
-    - Create "View Live" button on Admin Panel
     - Visibility Boolean on Admin Panel
     - Photos
         - Edit and delete photos page

@@ -5,7 +5,7 @@ auth();
 
 const getAllHills = async () => {
     // Fetch All Hills Data --
-    const r = await gql(`{allHills { id, name }}`, "admin");
+    const r = await gql(`{allHills (admin: true) { id, name, is_active }}`, "admin");
     const allHills = r.allHills;
 
     // Input Source for DOM Manipulation --
@@ -22,15 +22,13 @@ const getAllHills = async () => {
             hillDiv.className = "admin-hill-div";
         }
 
-        // Create Link --
-        let newLink = document.createElement('a');
-        newLink.href = "./edit.html?id=" + allHills[i].id;
-        newLink.className = "hill-link";
-
         // Create Hill Title Text --
         let hillTitle = document.createElement('span');
         hillTitle.innerText = allHills[i].name;
         hillTitle.className = "edit-hill";
+        if (allHills[i].is_active === 0) {
+            hillTitle.innerText = hillTitle.innerText + " - Inactive";
+        }
 
         // Create Controls Div --
         let controlDiv = document.createElement('div');

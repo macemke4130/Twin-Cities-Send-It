@@ -81,6 +81,10 @@ label {
     background-color: lightgrey;
 }
 
+.inactive-hill {
+    color: red;
+}
+
 @media only screen and (max-width: 600px) {
     label {
         display: flex;
