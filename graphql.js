@@ -13,7 +13,7 @@ export const schema = buildSchema(`
 
   type Mutation {
       newHill(name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!, video: String): mysqlResponse
-      editHill(id: Int!, name: String!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!, video: String): mysqlResponse
+      editHill(id: Int!, name: String!, is_active: Int!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!, video: String): mysqlResponse
       deleteHill(id: Int!): mysqlResponse
       newPhoto(hill_id: Int!, filename: String!): mysqlResponse
   }
@@ -103,7 +103,6 @@ export const root = {
         return r;
     },
     editHill: async (args) => {
-        console.log(args);
         const r = await query("update hills set ? where id = ?", [args, args.id]);
         return r;
     },

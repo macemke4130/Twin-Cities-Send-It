@@ -1,8 +1,8 @@
-import { gql } from "../utils.js";
+import { gql, apiService } from "../utils.js";
 
 // Redirect if not logged in --
 const token = localStorage.getItem("Token");
-if (!token) { window.location.href = "/";}
+if (!token) { window.location.href = "/"; }
 
 const params = window.location.search;
 const paramsList = params.split("=");
@@ -48,8 +48,23 @@ const editHill = async () => {
     }
 
     try {
-        const r = await gql(`mutation { editHill(id: ${id}, is_active: ${is_active} name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { insertId } }`, "admin");
+        const bodyObject = {
+            token: localStorage.getItem("Token")
+        };
+        const auth = await apiService("/auth", "POST", bodyObject);
+        console.log(auth);
+        if (auth.message === "jwt expired") {
+            // Redirect --
+            return;
+        } else if (auth.message === "jwt malformed") {
+            // Redirect --
+            return;
+        }
 
+        return;
+
+        const r = await gql(`mutation { editHill(id: ${id}, is_active: ${is_active} name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { changedRows } }`, "admin");
+        console.log(r);
         window.open("../details.html?id=" + id);
         window.location.href = "./panel.html";
     } catch (e) {

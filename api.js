@@ -10,10 +10,27 @@ router.post('/jwt', async (req, res) => {
     try {
         const token = await jwt.default.sign({
             data: username
-          }, privateKey, 
-          { expiresIn: '1h' });
-          console.log(token);
+        }, privateKey,
+            { expiresIn: '60s' });
+        console.log(token);
         res.json(token);
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+router.post('/auth', async (req, res) => {
+    try {
+        const token = req.body.token;
+        const auth = await jwt.default.verify(token, privateKey, function(err, decoded) {
+            if (err) {
+                res.json(err);
+                return;
+            } else {
+                console.log(decoded);
+                res.json(decoded);
+            }
+        });
     } catch (e) {
         console.log(e);
     }

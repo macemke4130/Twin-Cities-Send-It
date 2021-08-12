@@ -12,6 +12,7 @@
     - Mailgun?
 - Admin
     - GraphQL authenticate JWT token before admin api calls
+        - Authenticate token before mutations call. If success, call mutation. Else, redirect.
     - Create "View Live" button on Admin Panel
     - Visibility Boolean on Admin Panel
     - Photos
