@@ -69,6 +69,7 @@ const deleteHill = async () => {
 const bg = document.getElementById("alert-container");
 const alertMessage = document.getElementById("alert-message");
 const deleteConfirm = () => {
+    window.scrollTo(0, 0);
     bg.style.display = "flex";
     alertMessage.innerText = "Delete Hill?";
 }

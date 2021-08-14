@@ -4,7 +4,7 @@ import { gql, auth } from "../utils.js";
 auth();
 
 const getAllHills = async () => {
-    // Grabs list of all hills and populates select list --
+    // Grabs list of all active and inactive hills and populates select list --
     const r = await gql(`{allHills { id, name }}`, "admin");
     const allHills = r.allHills;
 
@@ -18,7 +18,7 @@ const getAllHills = async () => {
     }
 }
 
-const upload = async (e) => { 
+const upload = async (e) => {
     // Prevents form submission refresh --
     e.preventDefault();
 
@@ -39,18 +39,21 @@ const upload = async (e) => {
     // Upload API endpoint push --
     const req = await fetch("/upload", {
         method: "POST",
-        headers: { },
+        headers: {},
         body: data
     });
 
     // Response from server with file info --
     const file = await req.json();
 
-    const r = await gql(`mutation { newPhoto(hill_id: ${hillId}, filename: "${file.filename}") { insertId } }`, "admin");
-    if (r) {
-        console.log(r.newPhoto.insertId);
-        alert("New photo uploaded to " + file.path);
-        // window.location.href = "./panel.html";
+    try {
+        const r = await gql(`mutation { newPhoto(hill_id: ${hillId}, filename: "${file.filename}") { insertId } }`, "admin");
+        if (r) {
+            alert("New photo uploaded to " + file.path);
+            // window.location.href = "./panel.html";
+        }
+    } catch (e) {
+        console.error(e);
     }
 }
 

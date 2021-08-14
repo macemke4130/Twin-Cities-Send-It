@@ -58,7 +58,7 @@ label {
     color: black;
 }
 
-#allSends {
+#allSends, #allPhotos {
     width: 80%;
 }
 
@@ -83,6 +83,11 @@ label {
 
 .inactive-hill {
     color: red;
+}
+
+.admin-photo-list {
+    width: 100px;
+}
 }
 
 @media only screen and (max-width: 600px) {

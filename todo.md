@@ -1,5 +1,4 @@
 # To Do
-- Evironment Variables - Why do I have two config files?
 - Details
     - ?preview=1 for showing hills that are not active
 - Footer
@@ -13,7 +12,7 @@
 - GQL
     - Is there a way to populate MySQL calls with the args variable instead of the * ?
 - Admin
-    - Visibility Boolean on Admin Panel
+    - Modal for bad login info
     - Photos
         - Edit and delete photos page
         - Show preview of what you're about to upload
@@ -22,9 +21,4 @@
         - Encrypted Passwords in Database
     - Link to admin from public
     - Descrepency between inputing and populating src from iframes on New Hill and Edit Hill
-    - Fix modal background height
     - Try Catch for photos and new hill pages
-    - mysql join for photos and videos. Ditch the multiple fetch requests.
-    - show deleted hills? Somewhere. Dedicated page
-- Database
-    - Do away with video table. Insert video field in hills table.

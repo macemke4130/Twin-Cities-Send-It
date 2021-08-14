@@ -16,6 +16,7 @@ const getAllHills = async () => {
         // Create Container Div --
         let hillDiv = document.createElement('div');
 
+        // Alternate background color --
         if (i % 2 === 0) {
             hillDiv.className = "admin-hill-div grey-bg";
         } else {
@@ -25,9 +26,15 @@ const getAllHills = async () => {
         // Create Hill Title Text --
         let hillTitle = document.createElement('span');
         hillTitle.innerText = allHills[i].name;
-        hillTitle.className = "edit-hill";
-        if (allHills[i].is_active === 0) {
-            hillTitle.innerText = hillTitle.innerText + " - Inactive";
+
+        switch (allHills[i].is_active) {
+            case 1:
+                hillTitle.className = "edit-hill"
+                break;
+            case 0:
+                hillTitle.className = "inactive-hill edit-hill"
+                hillTitle.innerText = hillTitle.innerText + " - Inactive";
+                break;
         }
 
         // Create Controls Div --
@@ -50,6 +57,7 @@ const getAllHills = async () => {
         // Create Live View Link --
         let liveLink = document.createElement('a');
         liveLink.href = "../details.html?id=" + allHills[i].id;
+        liveLink.target = "_blank"
         liveLink.appendChild(liveBtn);
 
         // Modify DOM --
