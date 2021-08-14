@@ -86,7 +86,8 @@ label {
 }
 
 .admin-photo-list {
-    width: 100px;
+    width: 150px;
+    margin: 0.5em;
 }
 }
 
