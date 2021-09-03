@@ -49,8 +49,6 @@ const editHill = async () => {
     try {
         auth();
         const r = await gql(`mutation { editHill(id: ${id}, is_active: ${is_active} name: "${hillName}", description: "${description}", added_by: ${added_by}, rating: ${rating}, maplink: "${mapLink}", mapembed: "${mapembed}", video: "${video}") { changedRows } }`, "admin");
-        console.log(r);
-        window.open("../details.html?id=" + id);
         window.location.href = "./panel.html";
     } catch (e) {
         console.error(e);
