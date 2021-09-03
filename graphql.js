@@ -6,7 +6,7 @@ export const schema = buildSchema(`
       hillInfo (id: Int!): Hill
       allHills (admin: Boolean): [Hill]
       photos (hill_id: Int!): [Photos]
-      allPhotos: [Photos]
+      allPhotos(admin: Boolean): [Photos]
       user (name: String!, password: String!): User
       mood: String
   }
@@ -16,6 +16,7 @@ export const schema = buildSchema(`
       editHill(id: Int!, name: String!, is_active: Int!, description: String!, added_by: Int!, maplink: String!, mapembed: String!, rating: Int!, video: String): mysqlResponse
       deleteHill(id: Int!): mysqlResponse
       newPhoto(hill_id: Int!, filename: String!): mysqlResponse
+      deletePhoto(id: Int!): mysqlResponse
   }
 
   type mysqlResponse {
@@ -47,6 +48,7 @@ export const schema = buildSchema(`
       id: Int
       hill_id: Int
       filename: String
+      name: String
   }
 
   type User {
@@ -76,7 +78,9 @@ export const root = {
         return r;
     },
     allPhotos: async (args, req) => {
-        const r = await query("select * from photos order by hill_id");
+        const r = args.admin ? 
+        await query("select photos.id, photos.hill_id, photos.filename, hills.name from photos join hills on photos.hill_id = hills.id order by hill_id") :
+        await query("select * from photos order by hill_id");
         return r;
     },
     video: async (args, req) => {
@@ -117,6 +121,10 @@ export const root = {
     },
     newPhoto: async (args) => {
         const r = await query("insert into photos set ?", [args]);
+        return r;
+    },
+    deletePhoto: async (args) => {
+        const r = await query("delete from photos where id = ?", [args.id]);
         return r;
     }
 };
