@@ -67,7 +67,7 @@ export const root = {
     allHills: async (args, req) => {
         if (args.admin === true) {
             // Used for admin panel to see unactive hills --
-            const r = await query("select * from hills order by id desc");
+            const r = await query("select * from hills order by is_active desc");
             return r;
         }
         const r = await query("select * from hills where is_active = 1 order by id desc");
