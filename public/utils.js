@@ -69,3 +69,8 @@ export const auth = async () => {
         return;
     }
 }
+
+export const logOut = () => {
+    localStorage.removeItem("Token");
+    window.location.href = "../";
+}

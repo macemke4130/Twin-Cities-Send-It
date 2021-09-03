@@ -1,4 +1,4 @@
-import { gql, auth } from "../utils.js";
+import { gql, auth, logOut } from "../utils.js";
 
 // Redirect if not logged in --
 auth();
@@ -82,5 +82,6 @@ document.getElementById("editHill").onclick = editHill;
 document.getElementById("deleteHill").onclick = deleteConfirm;
 document.getElementById("confirmDelete").onclick = deleteHill;
 document.getElementById("denyDelete").onclick = clearModal;
+document.getElementById("logout").onclick = logOut;
 
 getHill(id);

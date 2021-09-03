@@ -1,4 +1,4 @@
-import { gql, auth } from "../utils.js";
+import { gql, auth, logOut } from "../utils.js";
 
 // Redirect if not logged in --
 auth();
@@ -70,3 +70,5 @@ const getAllHills = async () => {
 }
 
 getAllHills();
+
+document.getElementById("logout").onclick = logOut;

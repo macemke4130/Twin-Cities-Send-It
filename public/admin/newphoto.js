@@ -1,4 +1,4 @@
-import { gql, auth } from "../utils.js";
+import { gql, auth, logOut } from "../utils.js";
 
 // Redirect if not logged in --
 auth();
@@ -60,3 +60,5 @@ const upload = async (e) => {
 const form = document.getElementById('photoUpload');
 form.addEventListener('submit', upload);
 getAllHills();
+
+document.getElementById("logout").onclick = logOut;

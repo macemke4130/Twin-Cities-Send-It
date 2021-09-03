@@ -1,4 +1,4 @@
-import { gql, auth } from "../utils.js";
+import { gql, auth, logOut } from "../utils.js";
 
 // Redirect if not logged in --
 auth();
@@ -37,3 +37,4 @@ const submitNewHill = async () => {
 }
 
 document.getElementById("submitNew").onclick = submitNewHill;
+document.getElementById("logout").onclick = logOut;
